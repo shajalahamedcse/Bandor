@@ -1,18 +1,32 @@
 package lexer
 
 import (
+	"fmt"
 	"testing"
-	"Compiler/token"
+
+	"../token"
 )
 
 type Expected struct {
-	expectedType token.TokenType
+	expectedType    token.TokenType
 	expectedLiteral string
 }
 
-func TestNextToken(t *testing.T){
-	input := `=+(){},;`
+func TestNextToken(t *testing.T) {
+	//input := `=+(){},;`
 	tests := []Expected{
-		{token.ASSIGN,"="}
+		{token.ASSIGN, "="},
+		{token.PLUS, "+"},
+		{token.LPAREN, "("},
+		{token.RPAREN, ")"},
+		{token.LBRACE, "{"},
+		{token.RBRACE, "}"},
+		{token.COMMA, ","},
+		{token.SEMICOLON, ";"},
+		{token.EOF, ""},
+	}
+
+	for i, tt := range tests {
+		fmt.Println(i, tt)
 	}
 }
